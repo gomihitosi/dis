@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            margin:0;
+            padding:0;
+            font-size: 18px;
+        }
+        select {
+            font-size: 18px;
+        }
+        #app {
+            padding: 0.6em 0.4em;
+            display: flex;
+            flex-direction: column;
+        }
+        .df {
+            display:flex;
+            margin: 0.4em 0;
+        }
+        .f1 {
+            flex:1;
+        }
+        .message {
+            padding: 0.5em;
+            font-size: 0.75em;
+            background-color: #e8e8f1;
+        }
+    </style>
+    <title>Camera</title>
+</head>
+<body>
+    <div class="message">
+        ■PC88パレットを選んだり、細かさを小さくしたり、コントラストの数字を変えると処理が重くなるので注意。一部カラーパレットは<a href="https://lospec.com/palette-list" target="_blank" rel="noopener noreferrer">LOSPEC</a>からお借りしています。
+    </div>
+    <div id="app">
+        <div class="df">
+            <label for="camera">カメラ:</label>
+            <select id="camera" class="f1">
+                <option value="FRONT">フロント</option>
+                <option value="REAR">リア</option>
+            </select>
+        </div>
+        <div class="df">
+            <label for="palette">パレット:</label>
+            <select id="palette" class="f1">
+                <option value="GB_GREEN">GB(Green)</option>
+                <option value="GB_MONOCHROME">GB(Monochrome)</option>
+                <option value="PC88">PC88(重くなるかも)</option>
+                <option value="BLACK_WHITE">白黒</option>
+                <option value="AYY4">AYY4</option>
+                <option value="BLK_AQU4">BLK AQU4</option>
+                <option value="SPACEHAZE">SPACEHAZE</option>
+                <option value="CRIMSON">CRIMSON</option>
+            </select>
+        </div>
+        <div class="df">
+            <label for="step">細かさ:</label>
+            <span id="stepValue">0</span>
+            <input id="step" type="range" min="1" max="10" class="f1">
+        </div>
+        <div class="df">
+            <label for="contrast">コントラスト:</label>
+            <span id="contrastValue">0</span>
+            <input id="contrast" type="range" min="-100" max="100" class="f1">
+        </div>
+        <button type="button" id="start">start</button>
+    </div>
+    <div class="df">
+        <canvas id="canvas" class="f1"></canvas>
+    </div>
+    <script src="./ditherjs.dist.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
